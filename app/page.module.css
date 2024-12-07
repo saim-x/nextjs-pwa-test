@@ -1,12 +1,13 @@
 .card {
-  background-color: #ffffff; /* Light background for the card */
+  background-color: #333; /* Dark background for the card in dark mode */
+  color: #ffffff; /* Light text color for better readability in dark mode */
   border-radius: 20px; /* More rounded corners */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* More prominent shadow */
   padding: 30px; /* Increased padding */
   text-align: center; /* Centered text */
   max-width: 300px; /* Maximum width of the card */
   margin: 40px auto; /* Increased margin to center the card */
-  color: #333; /* Darker text color for better readability */
+  font-weight: 700; /* Changed to bolder font weight */
 }
 
 .profileImage {
@@ -15,25 +16,26 @@
   width: 150px; /* Increased width for the image */
   height: 150px; /* Increased height for the image */
   object-fit: cover; /* Ensure the image covers the frame */
+  display: block; /* Center the image */
+  margin-left: auto; /* Center the image */
+  margin-right: auto; /* Center the image */
 }
 
 .name {
   font-size: 1.6rem; /* Increased font size for the name */
-  font-weight: 700; /* Changed to bolder font weight */
-  color: #333; /* Dark text color */
+  color: #ffffff; /* Light text color */
   margin: 10px 0; /* Margin above and below the name */
 }
 
 .title {
   font-size: 1.1rem; /* Font size for the title */
-  color: #666; /* Dark gray color for the title */
-  font-weight: 700; /* Changed to bolder font weight */
+  color: #ffffff; /* Light text color */
   margin: 5px 0; /* Margin above and below the title */
 }
 
 .description {
   font-size: 0.9rem; /* Smaller font size for the description */
-  color: #777; /* Gray for the description */
+  color: #ffffff; /* Light text color */
   font-weight:500; /* Changed to bolder font weight */
   margin: 15px 0; /* Increased margin above and below the description */
 }
@@ -55,11 +57,12 @@
   .card {
     max-width: 90%; /* Allow the card to take up more width on smaller screens */
     padding: 15px; /* Adjust padding for smaller screens */
+    background-color: #222; /* Darker background for smaller screens */
   }
 
   .profileImage {
-    width: 80px; /* Smaller image on mobile */
-    height: 80px; /* Smaller image on mobile */
+    width: 100px; /* Smaller image on mobile */
+    height: 100px; /* Smaller image on mobile */
   }
 
   .name {
