@@ -5,8 +5,8 @@ import { FaHome, FaInfoCircle, FaCog, FaQuestionCircle, FaEnvelope } from 'react
 
 
 const PrayerTimes = () => {
-    const [currentTime, setCurrentTime] = React.useState('1:43');
-    const [currentDate] = React.useState('Sat 7 Dec 2024');
+    const [currentTime, setCurrentTime] = React.useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    const [currentDate] = React.useState(new Date().toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }));
     const [asarCountdown] = React.useState('01:02:20');
     const [isSidebarOpen, setIsSidebarOpen] = React.useState(false); // State for sidebar visibility
 
@@ -99,19 +99,71 @@ const PrayerTimes = () => {
                 </div>
             </header>
 
-            {/* Date and Clock - adjusted height */}
-            <div className="relative h-40 bg-gradient-to-b from-amber-50 to-purple-900 rounded-lg mb-4">
-                <div className="absolute top-3 left-3 text-sm text-amber-800">{currentDate}</div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-24 h-24 bg-amber-100 border-4 border-amber-300 rounded-lg transform rotate-45 flex items-center justify-center">
-                        <div className="transform -rotate-45 text-xl text-amber-800">{currentTime}</div>
-                    </div>
-                </div>
+            {/* Date and Clock Section */}
+      <div className="relative h-40 bg-gradient-to-b from-amber-50 to-purple-900 rounded-lg mb-4 overflow-hidden">
+        {/* Decorative Islamic Pattern Background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              <pattern id="islamic-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M10,0 L20,10 L10,20 L0,10 Z" fill="currentColor" className="text-amber-200" />
+                <circle cx="10" cy="10" r="3" fill="currentColor" className="text-amber-300" />
+              </pattern>
+              <rect width="100" height="100" fill="url(#islamic-pattern)" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Date Display with Ornamental Border */}
+        <div className="absolute top-3 left-3 px-4 py-1 bg-amber-50/80 rounded-full border border-amber-200">
+          <span className="text-sm text-amber-800 font-semibold">{currentDate}</span>
+        </div>
+
+        {/* Central Clock Design */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {/* Outer Decorative Border */}
+          <div className="w-32 h-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+            <svg viewBox="0 0 100 100" className="w-full h-full absolute">
+              <path d="M50,0 L100,50 L50,100 L0,50 Z" fill="none" stroke="#F8B156" strokeWidth="2" />
+              <path d="M25,0 L100,75 L75,100 L0,25 Z" fill="none" stroke="#F8B156" strokeWidth="1" />
+            </svg>
+          </div>
+
+          {/* Main Clock Face */}
+          <div className="w-24 h-24 bg-gradient-to-br from-amber-50 to-amber-100 border-4 border-amber-300/50 rounded-lg transform rotate-45 flex items-center justify-center relative overflow-hidden">
+            {/* Decorative Crescents */}
+            <div className="absolute top-0 left-0 w-full h-full">
+              <svg viewBox="0 0 100 100" className="w-full h-full absolute opacity-10">
+                <path d="M30,0 A40,40 0 0,1 70,0" fill="none" stroke="#F8B156" strokeWidth="4" />
+                <path d="M0,30 A40,40 0 0,1 0,70" fill="none" stroke="#F8B156" strokeWidth="4" />
+                <path d="M30,100 A40,40 0 0,0 70,100" fill="none" stroke="#F8B156" strokeWidth="4" />
+                <path d="M100,30 A40,40 0 0,0 100,70" fill="none" stroke="#F8B156" strokeWidth="4" />
+              </svg>
             </div>
+
+            {/* Time Display */}
+            <div className="transform -rotate-45 text-xl text-amber-800 font-semibold z-10 bg-amber-50/50 px-3 py-1 rounded-full backdrop-blur-sm">
+              {currentTime}
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Crescents */}
+        <div className="absolute top-2 right-2">
+          <svg width="24" height="24" viewBox="0 0 24 24" className="text-amber-300/30">
+            <path d="M12 2.25A9.75 9.75 0 0 1 21.75 12 9.75 9.75 0 0 1 12 21.75 9.75 9.75 0 0 1 2.25 12 9.75 9.75 0 0 1 12 2.25z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div className="absolute bottom-2 left-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" className="text-amber-300/30">
+            <path d="M12 2.25A9.75 9.75 0 0 1 21.75 12 9.75 9.75 0 0 1 12 21.75 9.75 9.75 0 0 1 2.25 12 9.75 9.75 0 0 1 12 2.25z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
 
             {/* Asar Countdown - made more compact */}
             <div className="bg-purple-900 text-white py-2 px-4 text-center rounded-lg mb-4">
-                <h2 className="text-xl">ASAR</h2>
+                <h2 className="text-xl font-bold">ASAR</h2>
                 <div className="text-lg">In {asarCountdown}</div>
             </div>
 
